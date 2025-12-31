@@ -96,7 +96,7 @@ export default function ToolGrid() {
             // O forzamos detalle directo con setSelectedTool(found) si prefieres
             handleToolClick(found); 
 
-            // Limpiamos la URL silenciosamente para que no moleste visualmente
+            // Limpiamos la URL silenciosamente para que no moleste visualmentee
             const newUrl = window.location.pathname;
             window.history.replaceState({}, '', newUrl);
         }
