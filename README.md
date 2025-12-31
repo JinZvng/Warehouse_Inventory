@@ -35,5 +35,19 @@ Dada la sensibilidad de la información de la compañía, el sistema implementa:
 * **Backend:** Supabase (PostgreSQL) con políticas de seguridad avanzadas.
 * **Integraciones:** Generación de QR dinámica y lógica de escaneo nativo.
 
+## ⚙️ Instalación y Puesta en Marcha
+
+Si desea ejecutar este proyecto en un entorno local para pruebas o desarrollo, siga estos pasos:
+
+### 1. Requisitos Previos
+* **Node.js**: Versión 18 o superior instalada.
+* **Git**: Para clonar el repositorio.
+* **Cuenta en Supabase**: Para la base de datos y autenticación.
+
+### 2. Clonar el Repositorio
+```bash
+git clone [https://github.com/JinZGG/Warehouse_Inventory.git](https://github.com/JinZGG/Warehouse_Inventory.git)
+cd Warehouse_Inventory
+
 ---
 Desarrollado para la optimización de procesos de **Servicio Técnico y Postventa**.
