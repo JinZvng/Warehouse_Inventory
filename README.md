@@ -50,4 +50,5 @@ git clone [https://github.com/JinZGG/Warehouse_Inventory.git](https://github.com
 cd Warehouse_Inventory
 
 ---
+```
 Desarrollado para la optimización de procesos de **Servicio Técnico y Postventa**.
