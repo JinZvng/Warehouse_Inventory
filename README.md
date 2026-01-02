@@ -6,7 +6,7 @@
 
 
 <div align="center">
-  <h3>✨ Demo del Sistema ✨</h3>
+  <h3>Pantalla de Carga Makita 💪🏼 </h3>
   <img src="https://github.com/user-attachments/assets/2d7c713b-25ad-40b4-a02f-7294421d0345" width="600" alt="Demo Loader Makita">
 </div>
 
