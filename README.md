@@ -4,6 +4,8 @@
 ![Seguridad](https://img.shields.io/badge/Seguridad-SSL%20%26%20RLS-lock)
 ![Framework](https://img.shields.io/badge/Next.js-14-black)
 
+![Grabación 2026-01-02 160532](https://github.com/user-attachments/assets/2d7c713b-25ad-40b4-a02f-7294421d0345)
+
 ## 📋 Resumen del Proyecto
 El **Sistema de Control de Desarmes (SCD)** es una solución tecnológica diseñada específicamente para optimizar la logística interna de **Makita**. El proyecto centraliza la gestión de herramientas en proceso de desarme y mantenimiento, eliminando las brechas de información entre el taller (*Gemba*) y el inventario administrativo.
 <img width="1901" height="922" alt="image" src="https://github.com/user-attachments/assets/3ad1bad0-d2a3-4e3f-84cf-b39b895477c2" />
