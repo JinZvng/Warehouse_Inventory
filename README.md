@@ -6,23 +6,28 @@
 
 ## 📋 Resumen del Proyecto
 El **Sistema de Control de Desarmes (SCD)** es una solución tecnológica diseñada específicamente para optimizar la logística interna de **Makita**. El proyecto centraliza la gestión de herramientas en proceso de desarme y mantenimiento, eliminando las brechas de información entre el taller (*Gemba*) y el inventario administrativo.
+<img width="1901" height="922" alt="image" src="https://github.com/user-attachments/assets/3ad1bad0-d2a3-4e3f-84cf-b39b895477c2" />
 
 ## 🚀 Funcionalidades Clave
 
 ### 1. Gestión Visual de Flujos (Mieruka)
 * **Monitoreo de Estados:** Seguimiento en tiempo real de herramientas en estados: *En desarme*, *Desarmado*, *Rearmando* y *Rearmadas*.
 * **Dashboard de Métricas:** Visualización de KPIs críticos como herramientas pendientes y volumen de trabajo en bodega.
+<img width="1257" height="200" alt="image" src="https://github.com/user-attachments/assets/59a2d850-c884-4e3c-b790-f70af73d19dd" />
 
 ### 2. Trazabilidad Inteligente mediante QR
 * **Acceso Instantáneo:** Cada herramienta cuenta con una etiqueta única de 50x50mm con un código QR.
 * **Consulta Móvil:** Al escanear el QR desde cualquier dispositivo, el sistema despliega automáticamente la ficha técnica (`ToolDetail`), mostrando repuestos faltantes y el historial de extracciones.
+<img width="201" height="296" alt="image" src="https://github.com/user-attachments/assets/6fff6228-fe30-4150-acbd-586f136251b2" />
 
 ### 3. Prevención de Pérdidas y Errores (Poka-Yoke)
 * **Validación de Historial:** El sistema detecta automáticamente si un repuesto ya ha sido extraído previamente para una misma herramienta, evitando duplicidad de solicitudes y pérdida de stock.
 * **Carga Masiva:** Módulo para la importación de catálogos y herramientas desde archivos Excel para asegurar la integridad de los datos.
+<img width="657" height="295" alt="image" src="https://github.com/user-attachments/assets/d493f720-364a-4571-aef0-4191fcbf5e51" />
 
 ### 4. Puente Operativo SAP
 * **Gestión de Solicitudes:** Módulo especializado para procesar Solicitudes de Traslado (SAP) con desglose de cantidades individuales para una trazabilidad unitaria.
+<img width="1017" height="771" alt="image" src="https://github.com/user-attachments/assets/8ff1bcfc-5b9f-4fda-836d-1530fc29243b" />
 
 ## 🔐 Seguridad y Confidencialidad
 Dada la sensibilidad de la información de la compañía, el sistema implementa:
