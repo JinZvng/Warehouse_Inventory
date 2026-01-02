@@ -24,6 +24,7 @@ import confetti from 'canvas-confetti';
 import DashboardModal from './DashboardModal';
 import ToolHistoryModal from './ToolHistoryModal';
 import QRScannerModal from './QRScannerModal';
+import MakitaLoader from './MakitaLoader';
 
 import { 
   Search, LayoutGrid, LayoutList, ChevronLeft, ChevronRight, 
@@ -61,6 +62,9 @@ export default function ToolGrid() {
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = viewMode === 'grid' ? 12 : 20;
     
+  const [isLoading, setIsLoading] = useState(true);
+
+
   // 3. INICIALIZAMOS LOS HOOKS DE URL
   const searchParams = useSearchParams();
 
@@ -77,6 +81,17 @@ export default function ToolGrid() {
   };
 
   useEffect(() => { fetchData(); }, []);
+
+  useEffect(() => {
+    console.log("📡 Conectando antena...");
+    const channel = supabase
+      .channel('cambios-globales')
+      .on('postgres_changes', { event: '*', schema: 'public', table: 'herramientas' }, () => fetchData())
+      .on('postgres_changes', { event: '*', schema: 'public', table: 'solicitudes_sap' }, () => fetchData())
+      .subscribe();
+
+    return () => { supabase.removeChannel(channel); };
+  }, []);
 
   // ---------------------------------------------------------
   // 4. LA MAGIA DEL QR (EL OÍDO)
@@ -497,6 +512,10 @@ export default function ToolGrid() {
   );
 
   const disassembledTools = tools.filter(t => t.estado === 'Desarmado'); 
+
+  if (isLoading) {
+    return <MakitaLoader onFinish={() => setIsLoading(false)} />;
+  }
   
   return (
     <div className="container mx-auto p-6 max-w-7xl min-h-screen flex flex-col">
