@@ -7,7 +7,7 @@
 
 <div align="center">
   <h3>✨ Demo del Sistema ✨</h3>
-  <img src="![Grabación 2026-01-02 160532](https://github.com/user-attachments/assets/2d7c713b-25ad-40b4-a02f-7294421d0345)" width="600" alt="Demo Loader Makita">
+  <img src="https://github.com/user-attachments/assets/2d7c713b-25ad-40b4-a02f-7294421d0345" width="600" alt="Demo Loader Makita">
 </div>
 
 
