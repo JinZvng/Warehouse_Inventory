@@ -11,6 +11,9 @@ coverage/
 out/
 build/
 
+#Eliminar sap-proxy
+app/api/sap-proxy/route.ts
+
 # Entorno y Claves (¡MUY IMPORTANTE!)
 .env
 .env.local

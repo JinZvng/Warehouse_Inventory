@@ -24,6 +24,7 @@ interface RequestGroup {
   modelo: string;
   cantidad: number;
   bodega: string;
+  customBodega?: string;
   toolId?: string;
   ubicacion?: string; 
   
@@ -238,7 +239,12 @@ export default function RequestSapModal({ onClose, onSuccess }: RequestSapModalP
             }
         }
     }
-
+    
+    for (const [index, req] of requests.entries()) {
+    if (req.bodega === 'OTROS' && !req.customBodega) {
+        return alert(`En la tarjeta #${index + 1} seleccionaste "OTRA", pero no escribiste el nombre de la bodega.`);
+    }
+}
     setLoading(true);
 
     const dataToInsert = requests.map(req => {
@@ -259,11 +265,18 @@ export default function RequestSapModal({ onClose, onSuccess }: RequestSapModalP
         const clientsString = expandedParts.map(p => p.client || 'Anónimo').join('\n');
         // ----------------------------------
 
+        let bodegaFinal = req.bodega;
+        if (req.bodega === 'OTROS') {
+            bodegaFinal = req.customBodega ? req.customBodega.toUpperCase() : 'OTROS MANUAL';
+        }
+
+
+
         return {
             nro_sap: nroSap,
             modelo: req.modelo.toUpperCase(),
             cantidad_total: req.cantidad, // Esta es la cantidad de la herramienta (cabecera)
-            bodega_origen: req.bodega,
+            bodega_origen: bodegaFinal,
             tool_id_origen: req.bodega === 'ST02' && req.toolId ? parseInt(req.toolId) : null,
             ubicacion: req.ubicacion ? req.ubicacion.toUpperCase() : null,
             codigo_objetivo: codesString, 
@@ -333,12 +346,17 @@ export default function RequestSapModal({ onClose, onSuccess }: RequestSapModalP
                                 <div className="relative">
                                     <ArrowRightLeft className="absolute left-2 top-2.5 w-3 h-3 text-slate-400"/>
                                     <select 
-                                        className={`w-full pl-7 p-2 border rounded-lg text-sm font-bold outline-none ${req.bodega === 'ST02' ? 'border-blue-300 text-blue-700 bg-white' : 'border-slate-300'}`}
+                                        className={`w-full pl-7 p-2 border rounded-lg text-sm font-bold outline-none ${
+                                            req.bodega === 'ST02' ? 'border-blue-300 text-blue-700 bg-white' : 
+                                            req.bodega === 'OTROS' ? 'border-purple-300 text-purple-700 bg-purple-50' : // Estilo especial para OTROS
+                                            'border-slate-300'
+                                        }`}
                                         value={req.bodega}
                                         onChange={e => updateRequestField(reqIndex, 'bodega', e.target.value)}
                                     >
                                         <option value="BOD01">BOD01</option>
                                         <option value="ST02">ST02</option>
+                                        <option value="OTROS">OTRA...</option> {/* <--- OPCIÓN NUEVA */}
                                     </select>
                                 </div>
                             </div>
@@ -402,6 +420,24 @@ export default function RequestSapModal({ onClose, onSuccess }: RequestSapModalP
                                         className="w-full p-2 border-2 border-blue-200 rounded-lg font-bold uppercase text-blue-900 outline-none bg-slate-50 cursor-not-allowed"
                                         value={req.ubicacion}
                                         readOnly // Solo lectura
+                                    />
+                                </div>
+                            )}
+
+
+                            {/* INPUT MANUAL (Solo aparece si elige OTROS) */}
+                            {req.bodega === 'OTROS' && (
+                                <div className="w-40 animate-in fade-in slide-in-from-left-2">
+                                    <label className="block text-[10px] font-bold text-purple-600 uppercase mb-1">
+                                        Nombre Bodega
+                                    </label>
+                                    <input 
+                                        type="text" 
+                                        placeholder="Ej: BODXX" 
+                                        autoFocus
+                                        className="w-full p-2 border-2 border-purple-200 rounded-lg font-bold text-purple-900 focus:border-purple-500 outline-none uppercase bg-white"
+                                        value={req.customBodega || ''}
+                                        onChange={e => updateRequestField(reqIndex, 'customBodega', e.target.value)}
                                     />
                                 </div>
                             )}
